@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <title>Clientes</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        
+        <a href="/" class="navbar-brand"> Clientes</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">  
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/alt">Agregar</a>
+          </li>
+        </div>
+        
+      </div>
+    </nav>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+<div class="container ">
+    <div class="row mt-2">
+        <div class= "col-md"> 
+          <table class ="table table-striped mt-4">
+            <thead class="thead-dark">
+                <tr class="bg-dark text-white">
+                    <th scope="col">Prospecto</th>
+                    <th scope="col">Info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach((data)=> { %>
+                <tr>
+                    <td>Nombre</td>
+                    <td><%= data.nom %></td>
+                </tr>
+                <tr>
+                    <td>Apellido Paterno</td>
+                    <td><%= data.apellidoP %></td>
+                </tr>
+                <tr>
+                    <td>Apellido Materno</td>
+                    <td><%= data.apellidoS %></td>
+                </tr>
+                <tr>
+                    <td>Calle</td>
+                    <td><%= data.calle %></td>
+                </tr>
+                <tr>
+                    <td>Numero</td>
+                    <td><%= data.num %></td>
+                </tr>
+                <tr>
+                  <td>Colonia</td>
+                  <td><%= data.col %></td>
+              </tr>
+              <tr>
+                  <td>Codigo Postal</td>
+                  <td><%= data.cp %></td>
+              </tr>
+              <tr>
+                  <td>Telefono</td>
+                  <td><%= data.tel %></td>
+              </tr>
+              <tr>
+                  <td>RFC</td>
+                  <td><%= data.rfc %></td>
+              </tr>
+              <tr>
+                  <td>Documento</td>
+                  <td>
+                      <a type="button"  class="btn btn-outline-dark bi bi-file-earmark-arrow-down-fill"></a>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Estatus</td>
+                  <td><%= data.edesc %></td>
+              </tr>
+              <% }) %>
+          </tbody>
+      </table>
+       </div>
+    </div>
+</div>
+
+<div class="col-md-5 mt-2">
+  <div class="card " style="     margin-left: 17%;">
+   <div class="card-body">
+ 
+    <% data.forEach((data)=> { %>
+<form id="up_form" action="/update/<%= data.id %>" method= "post">
+  <legend class="col-form-label col-sm-2 pt-0">Estado:</legend>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" id="est_upd" name="est_upd"  value="2" required>
+    <label class="form-check-label" for="inlineRadio1">Aceptado</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" id="est_upd" name="est_upd" value="3" required>
+    <label class="form-check-label" for="inlineRadio2">Rechazado</label>
+  
+</div>
+<div class = "form-group mb-3">
+  <input type="text" rows="3" id="obs" name="obs" placeholder="Observaciones de rechazo" class="form-control"></input>
+</div>
+<button type="submit" class="btn btn-outline-dark bi bi-file-earmark-arrow-down-fill"> Guardar Estado</button>
+<% }) %>
+</div>
+</div>
+</div>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  </body>
+</html>
